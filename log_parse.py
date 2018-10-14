@@ -59,7 +59,7 @@ def parse_by_request_type(log, request_type):
 
 def parse(
         ignore_files=False,
-        ignore_urls=[],
+        ignore_urls=set(),
         start_at=None,
         stop_at=None,
         request_type=None,
@@ -79,7 +79,7 @@ def parse(
                 if parse_ignore_urls(line, ignore_urls):
                     continue
             if ignore_www:
-                line = parse_urls_without_www(line) if parse_urls_without_www(line) else line
+                line = parse_urls_without_www(line)# if parse_urls_without_www(line) else line
             if start_at:
                 if start_at_time(line, start_at):
                     continue
